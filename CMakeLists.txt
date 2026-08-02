@@ -7,9 +7,12 @@ find_package(glfw3 REQUIRED)
 
 add_executable(shooter main.cpp glad.c
         include/Shader.h
-        include/Shader.h)
+        include/Shader.h
+        src/shader.cpp)
 
 target_include_directories(shooter PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(shooter PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 target_link_libraries(shooter PRIVATE glfw "-framework OpenGL")
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
