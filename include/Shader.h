@@ -13,10 +13,9 @@ public:
     //The constructor read and build the shader
     Shader(const char* vertexPath, const char* fragmentPath);
 
-    void use();
-
+    void useShader();
+    void deleteShader();
     void setFloat(const std::string &name, float value);
-
     void setVec4(const std::string &name, float x, float y, float z, float w);
 
 private:
