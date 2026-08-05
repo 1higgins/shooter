@@ -15,6 +15,8 @@ add_executable(shooter
         include/Shader.h
         include/Sphere.h
         src/Sphere.cpp
+        src/Camera.cpp
+        include/Camera.h
 )
 
 target_include_directories(shooter PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

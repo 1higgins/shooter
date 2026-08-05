@@ -10,6 +10,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
+#include "Sphere.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -47,11 +48,28 @@ int main() {
     }
 
     Shader myShader("shaders/basico.vert", "shaders/basico.frag");
+    Sphere mySphere(1.0f, 72, 36, glm::vec3(0.0f, 0.0f, 0.0f));
 
+    //Active Z-BUFFER
+    glEnable(GL_DEPTH_TEST);
     //GameLoop
     while (!glfwWindowShouldClose(window)) {
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        myShader.useShader();
+
+        glm::mat4 view = glm::mat4(1.0f);
+        // Alejar la cámara 5 unidades hacia atrás para poder ver la esfera
+        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
+
+        glm::mat4 projection = glm::mat4(1.0f);
+        projection = glm::perspective(glm::radians(45.0f), (float)resx / (float)resy, 0.1f, 100.0f);
+
+        myShader.setMat4("view", view);
+        myShader.setMat4("projection", projection);
+
+        myShader.setVec4("ourColor", 0.8f, 0.3f, 0.0f, 1.0f);
+        mySphere.draw(myShader);
 
         glfwSwapBuffers(window);
         glfwPollEvents(); //this function checks if any event is triggered
