@@ -12,6 +12,9 @@ add_executable(shooter
         src/Shader.cpp
         libraries/stb/stb_image.h
         src/stb.cpp
+        include/Shader.h
+        include/Sphere.h
+        src/Sphere.cpp
 )
 
 target_include_directories(shooter PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

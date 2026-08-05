@@ -1,8 +1,10 @@
 #ifndef SHOOTER_SHADER_H
 #define SHOOTER_SHADER_H
 
+#include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <string>
+#include "glm/fwd.hpp"
 
 
 class Shader {
@@ -17,6 +19,7 @@ public:
     void deleteShader();
     void setFloat(const std::string &name, float value);
     void setVec4(const std::string &name, float x, float y, float z, float w);
+    void setMat4(const std::string &name, const glm::mat4 &mat) const;
 
 private:
     //Function to check for compilation and linking errors

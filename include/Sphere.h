@@ -1,0 +1,4 @@
+#ifndef SHOOTER_SPHERE_H
+#define SHOOTER_SPHERE_H
+
+#endif //SHOOTER_SPHERE_H
